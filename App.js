@@ -1,10 +1,17 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>HELLO MOBILE WORLD!</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>TITLE</Text>
+      </View>
+      <View style={styles.body}>
+        <Text>text text text text</Text>
+        <Text>text text text text</Text>
+        <Text>text text text text</Text>
+      </View>
     </View>
   );
 }
@@ -12,8 +19,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+  header: {
+    backgroundColor: "pink",
+    padding: 20,
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 24,
+  },
+  body: {
+    backgroundColor: "yellow",
+    padding: 40,
+    height: "100%",
+  }
 });
