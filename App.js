@@ -6,6 +6,7 @@ import {
   Button,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 export default function App() {
@@ -13,12 +14,12 @@ export default function App() {
   const [age, setAge] = useState("...");
   // const [person, setPerson] = useState({ name: "Mario", age: 26 });
   const [people, setPeople] = useState([
-    { name: "Julia", key: "1" },
-    { name: "Megan", key: "2" },
-    { name: "Jane", key: "3" },
-    { name: "Viola", key: "4" },
-    { name: "Karen", key: "5" },
-    { name: "Michelle", key: "6" },
+    { name: "Julia", id: "1" },
+    { name: "Megan", id: "2" },
+    { name: "Jane", id: "3" },
+    { name: "Viola", id: "4" },
+    { name: "Karen", id: "5" },
+    { name: "Michelle", id: "6" },
   ]);
 
   // const clickHandler = () => {
@@ -30,7 +31,7 @@ export default function App() {
       <View style={styles.header}>
         <Text style={styles.title}>TITLE</Text>
       </View>
-      <ScrollView>
+      
         <View style={styles.body}>
           <Text style={styles.text}>
             My name is {name} and I am {age} years old.
@@ -50,15 +51,29 @@ export default function App() {
         </View> */}
 
           <Text style={styles.text}>List of people:</Text>
+          
+          {/* 1st way of rendering a list: */}
+          {/* <ScrollView>
           {people.map((person) => {
             return (
-              <View key={person.key}>
+              <View key={person.id}>
                 <Text style={styles.item}>{person.name}</Text>
               </View>
             );
           })}
+          </ScrollView> */}
+
+          {/* 2nd way of rendering a list: */}
+          <FlatList
+            data={people}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <Text style={styles.item}>{item.name}</Text>
+            )}
+          />
+
         </View>
-      </ScrollView>
+      
     </View>
   );
 }
