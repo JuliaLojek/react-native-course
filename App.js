@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 
 export default function App() {
@@ -26,34 +27,40 @@ export default function App() {
   //   setName(name === "Julia" ? "Fred" : "Julia");
   // };
 
+  const pressHandler = (id) => {
+    setPeople((prevPeople) => {
+      return prevPeople.filter((person) => person.id !== id);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>TITLE</Text>
       </View>
-      
-        <View style={styles.body}>
-          <Text style={styles.text}>
-            My name is {name} and I am {age} years old.
-          </Text>
-          <TextInput
-            style={styles.input}
-            placeholder="enter your name"
-            onChangeText={(value) => setName(value || "...")}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="enter your age"
-            onChangeText={(value) => setAge(value || "...")}
-          />
-          {/* <View style={styles.button}>
+
+      <View style={styles.body}>
+        <Text style={styles.text}>
+          My name is {name} and I am {age} years old.
+        </Text>
+        <TextInput
+          style={styles.input}
+          placeholder="enter your name"
+          onChangeText={(value) => setName(value || "...")}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="enter your age"
+          onChangeText={(value) => setAge(value || "...")}
+        />
+        {/* <View style={styles.button}>
           <Button title="set your name" color="#DD7777" onPress={clickHandler} />
         </View> */}
 
-          <Text style={styles.text}>List of people:</Text>
-          
-          {/* 1st way of rendering a list: */}
-          {/* <ScrollView>
+        <Text style={styles.text}>List of people:</Text>
+
+        {/* 1st way of rendering a list: */}
+        {/* <ScrollView>
           {people.map((person) => {
             return (
               <View key={person.id}>
@@ -63,17 +70,17 @@ export default function App() {
           })}
           </ScrollView> */}
 
-          {/* 2nd way of rendering a list: */}
-          <FlatList
-            data={people}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
+        {/* 2nd way of rendering a list: */}
+        <FlatList
+          data={people}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => pressHandler(item.id)}>
               <Text style={styles.item}>{item.name}</Text>
-            )}
-          />
-
-        </View>
-      
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </View>
   );
 }
