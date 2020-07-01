@@ -14,7 +14,7 @@ const Form = ({ addTodo }) => {
       setText("");
     } else {
       Alert.alert("OOPS!", "You can't add an empty todo, you lazy cat!", [
-        { text: "understood!" },
+        { text: "ok, sorry :(" },
       ]);
     }
   };
