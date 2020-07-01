@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const TodoItem = ({ item, pressHandler }) => {
+const TodoItem = ({ item, removeTodo }) => {
   return (
-    <TouchableOpacity onPress={() => pressHandler(item.key)}>
+    <TouchableOpacity onPress={() => removeTodo(item.key)}>
       <Text style={styles.text}>{item.text}</Text>
     </TouchableOpacity>
   );
@@ -11,7 +11,7 @@ const TodoItem = ({ item, pressHandler }) => {
 
 const styles = StyleSheet.create({
   text: {
-    borderColor: "#775599",
+    borderColor: "#442266",
     borderWidth: 1.5,
     borderStyle: "dashed",
     borderRadius: 10,
