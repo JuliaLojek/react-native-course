@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, StyleSheet, Button } from "react-native";
+import { View, TextInput, StyleSheet, Button, Alert } from "react-native";
 
 const Form = ({ addTodo }) => {
   const [text, setText] = useState("");
@@ -9,8 +9,14 @@ const Form = ({ addTodo }) => {
   };
 
   const submitHandler = () => {
-    addTodo(text);
-    setText("");
+    if (text.length > 0) {
+      addTodo(text);
+      setText("");
+    } else {
+      Alert.alert("OOPS!", "You can't add an empty todo, you lazy cat!", [
+        { text: "understood!" },
+      ]);
+    }
   };
 
   return (
