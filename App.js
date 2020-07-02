@@ -32,25 +32,25 @@ export default function App() {
   };
 
   return (
-    // <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    //   <View style={styles.container}>
-    //     <Header />
-    //     <View style={styles.content}>
-    //       <Form addTodo={addTodo} />
-    //       <Text style={styles.info}>click a todo to remove it</Text>
-    //       <View style={styles.list}>
-    //         <FlatList
-    //           data={todos}
-    //           renderItem={({ item }) => (
-    //             <TodoItem item={item} removeTodo={removeTodo} />
-    //           )}
-    //         />
-    //       </View>
-    //     </View>
-    //   </View>
-    // </TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.content}>
+          <Form addTodo={addTodo} />
+          <Text style={styles.info}>click a todo to remove it</Text>
+          <View style={styles.list}>
+            <FlatList
+              data={todos}
+              renderItem={({ item }) => (
+                <TodoItem item={item} removeTodo={removeTodo} />
+              )}
+            />
+          </View>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
 
-    <Sandbox />
+    // <Sandbox />
   );
 }
 
@@ -60,8 +60,12 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
+    flex: 1,
   },
   info: {
     textAlign: "center",
+  },
+  list: {
+    flex: 1,
   },
 });
