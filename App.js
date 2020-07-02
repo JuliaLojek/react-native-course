@@ -37,7 +37,6 @@ export default function App() {
         <Header />
         <View style={styles.content}>
           <Form addTodo={addTodo} />
-          <Text style={styles.info}>click a todo to remove it</Text>
           <View style={styles.list}>
             <FlatList
               data={todos}
@@ -61,9 +60,6 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
     flex: 1,
-  },
-  info: {
-    textAlign: "center",
   },
   list: {
     flex: 1,
